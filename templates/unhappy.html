@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Title -->
+    <title>unhappy</title>
+
+    <!-- Favicon -->
+    <link rel="icon" href="./img/core-img/favicon.png">
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="../static/style.css">
+ <style>
+            #customers {
+                font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+                font-size: 20px;
+                border-collapse: collapse;
+                width: 100%;
+            }
+
+            #customers td, #customers th {
+                border: 1px solid #ddd;
+                padding: 15px;
+            }
+
+            #customers tr:nth-child(even){background-color: #f2f2f2;}
+
+            #customers tr:hover {background-color: #ddd;}
+
+            #customers th {
+                padding-top: 12px;
+                padding-bottom: 12px;
+                text-align: left;
+                background-color: #1DA1F2;
+                color: white;
+            }
+        </style>
+
+</head>
+
+<body>
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="loader"></div>
+    </div>
+    <!-- /Preloader -->
+
+    <!-- Top Search Form Area -->
+    <div class="top-search-area">
+        <div class="modal fade" id="searchModal" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <!-- Close -->
+                        <button type="button" class="btn close-btn" data-dismiss="modal"><i class="ti-close"></i></button>
+                        <!-- Form -->
+                        <form action="index.html" method="post">
+                            <input type="search" name="top-search-bar" class="form-control" placeholder="Search and hit enter...">
+                            <button type="submit">Search</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header Area Start -->
+    <header class="header-area">
+        <!-- Main Header Start -->
+        <div class="main-header-area">
+            <div class="classy-nav-container breakpoint-off">
+                <div class="container">
+                    <!-- Classy Menu -->
+                    <nav class="classy-navbar justify-content-between" id="alimeNav">
+
+                        <!-- Logo -->
+                        <a class="nav-brand" href="./index.html"><img src="./img/core-img/logo.png" alt=""></a>
+
+                        <!-- Navbar Toggler -->
+                        <div class="classy-navbar-toggler">
+                            <span class="navbarToggler"><span></span><span></span><span></span></span>
+                        </div>
+
+                        <!-- Menu -->
+                        <div class="classy-menu">
+                            <!-- Menu Close Button -->
+                            <div class="classycloseIcon">
+                                <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
+                            </div>
+                            <!-- Nav Start -->
+                            <div class="classynav">
+                                <ul id="nav">
+                                    <li  ><a href="{{url_for('first')}}">Home</a></li>
+                              
+                                    <li  ><a href="{{url_for('userdetail')}}">UserDetails</a></li>
+										<li><a href="{{ url_for('admin') }}">Tweets details</a></li>
+										<li class="active"><a href="#">Tweet sentiments</a>
+                                        <ul class="dropdown">
+                                            <li><a href="{{ url_for('fake') }}">Happy</a></li>
+                                            <li><a href="{{ url_for('unhappy') }}">Unhappy</a></li>
+                                             
+                                        </ul>
+                                    </li>
+									<li ><a href="{{url_for('charts')}}">chart</a></li>
+									<li><a href="{{ url_for('performance') }}">Performance_analysis</a></li>
+										 <li  ><a href="{{url_for('first')}}">Logout</a></li>
+                                </ul>
+
+                                <!-- Search Icon -->
+                                
+                            </div>
+                            <!-- Nav End -->
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- Header Area End -->
+
+    <!-- Breadcrumb Area Start -->
+    <section class="breadcrumb-area bg-img bg-overlay jarallax" style="background-image: url(../static/img/4.jpg);">
+        <div class="container h-100">
+            <div class="row h-100 align-items-center">
+                <div class="col-12">
+                    <div class="breadcrumb-content text-center">
+                        <h2 class="page-title">Tweets</h2>
+                        <nav aria-label="breadcrumb">
+                             
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Breadcrumb Area End -->
+
+    <!-- About Us Area Start -->
+    
+    <!-- About Us Area End -->
+
+    <!-- Why Choose Us Area Start -->
+    <section class="why-choose-us-area bg-gray section-padding-80-0 clearfix">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="section-heading text-center wow fadeInUp" data-wow-delay="100ms">
+                        <h2>UnHappy</h2>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                       <div class="col-md-7 mb-5">
+            <h2 class="section-heading"> </h2>
+          <center> <table id="customers" style="margin-left: 280px">
+
+    <tr>          
+	 
+	<th>user_id</th>
+	 <th>tweet_content</th>
+	<th>pred</th>
+ 
+	 
+     
+	
+       </tr>
+
+
+
+
+
+       {% for unhappy in unhappys %}        
+     <tr>
+    <td> {{unhappy[3]}} </td>
+	<td>  {{unhappy[1]}} </td>
+	<td> {{unhappy[2]}} </td>
+ 
+	 
+	 
+	 
+
+                    </td>
+
+                </tr>
+
+
+  {% endfor %}
+</table></center>
+		     
+          </div>
+                
+            </div>
+        </div>
+    </section>
+    <!-- Why Choose  us Area End -->
+
+    <!-- Our Team Area Start -->
+    
+
+    <!-- Follow Area Start -->
+    
+    <!-- Follow Area End -->
+
+    <!-- Footer Area Start -->
+    <footer class="footer-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="footer-content d-flex align-items-center justify-content-between">
+                        <!-- Copywrite Text -->
+                        
+                        <!-- Footer Logo -->
+                        <div class="footer-logo">
+                            <a href="#"><img src="img/core-img/logo2.png" alt=""></a>
+                        </div>
+                        <!-- Social Info -->
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Footer Area End -->
+
+    <!-- **** All JS Files ***** -->
+    <!-- jQuery 2.2.4 -->
+    <script src="../static/js/jquery.min.js"></script>
+    <!-- Popper -->
+    <script src="../static/js/popper.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="../static/js/bootstrap.min.js"></script>
+    <!-- All Plugins -->
+    <script src="../static/js/alime.bundle.js"></script>
+    <!-- Active -->
+    <script src="../static/js/default-assets/active.js"></script>
+
+</body>
+
+</html>
